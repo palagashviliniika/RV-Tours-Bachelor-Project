@@ -14,6 +14,14 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors:{
+                "snowWhite":{
+                    DEFAULT: "#fffafa"
+                },
+                "rust":{
+                    DEFAULT: "#B7410E"
+                }
+            }
         },
     },
 
