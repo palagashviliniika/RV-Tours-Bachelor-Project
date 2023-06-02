@@ -19,7 +19,11 @@ module.exports = {
                     DEFAULT: "#fffafa"
                 },
                 "rust":{
-                    DEFAULT: "#B7410E"
+                    DEFAULT: "#B7410E",
+                    hover: "#AB3C0D"
+                },
+                backgroundImage: {
+                    'landing-one': "url('/public/images/landingpic.jpg')"
                 }
             }
         },
