@@ -4,7 +4,7 @@ import { Link, Head } from '@inertiajs/react';
 
 const Navbar = () => {
     return (
-        <div className={"w-screen text-xl flex items-center justify-between bg-transparent px-32 py-6 sticky bg-snowWhite"}>
+        <div className={"sticky top-0 z-10 w-screen text-xl flex items-center justify-between bg-snowWhite px-32 py-6 sticky bg-snowWhite"}>
             <Link
                 href={route('home')}
                 className={"flex items-center gap-2 transition ease-in-out motion-safe:hover:scale-[1.05] hover:text-rust-hover"}

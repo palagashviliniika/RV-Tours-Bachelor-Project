@@ -1,7 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 import Navbar from "@/Components/Navbar";
-import Landing from "@/Components/Landing";
 import LandingSlider from "@/Components/LandingSlider";
+import PopularContainer from "@/Components/PopularContainer";
 
 export default function Welcome(props) {
     return (
@@ -26,8 +26,8 @@ export default function Welcome(props) {
 
             {/*<Link href={route('test')}>Test Page</Link>*/}
             <Navbar />
-            {/*<Landing />*/}
             <LandingSlider />
+            <PopularContainer />
 
         </>
     );

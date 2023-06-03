@@ -20,10 +20,15 @@ module.exports = {
                 },
                 "rust":{
                     DEFAULT: "#B7410E",
-                    hover: "#AB3C0D"
+                    hover: "#AB3C0D",
+                    gradient: "#EE5A1B"
                 },
                 backgroundImage: {
                     'landing-one': "url('/public/images/landingpic.jpg')"
+                },
+                texts:{
+                    DEFAULT: "#1C3041",
+                    gray: "#576060"
                 }
             }
         },
