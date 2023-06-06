@@ -29,10 +29,16 @@ module.exports = {
                 texts:{
                     DEFAULT: "#1C3041",
                     gray: "#576060"
+                },
+                corePlugins: {
+                    aspectRatio: false,
                 }
             }
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio')
+    ],
 };

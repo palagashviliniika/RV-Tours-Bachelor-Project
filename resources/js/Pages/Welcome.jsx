@@ -2,6 +2,7 @@ import { Link, Head } from '@inertiajs/react';
 import Navbar from "@/Components/Navbar";
 import LandingSlider from "@/Components/LandingSlider";
 import PopularContainer from "@/Components/PopularContainer";
+import CustomizeContainer from "@/Components/CustomizeContainer";
 
 export default function Welcome(props) {
     return (
@@ -28,7 +29,7 @@ export default function Welcome(props) {
             <Navbar />
             <LandingSlider />
             <PopularContainer />
-
+            <CustomizeContainer />
         </>
     );
 }
