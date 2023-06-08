@@ -21,6 +21,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "date-fns": "^2.30.0",
+        "react-date-range": "^1.4.0",
         "react-icons": "^4.9.0",
         "swiper": "^9.3.2"
     }

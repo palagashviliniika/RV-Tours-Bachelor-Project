@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import CustomSelect from "@/Components/CustomSelect";
+import DateRangeComp from "@/Components/DateRangeComp";
 
 const CustomizeForm = () => {
     const [formData, setFormData] = useState({
         location:"",
-        vehicle:""
+        vehicle:"",
+        range:{
+
+        }
     })
 
     const handleChange = (event) => {
@@ -64,6 +68,7 @@ const CustomizeForm = () => {
                         }
                     ]}
                 />
+                <DateRangeComp />
             </form>
         </div>
     );
