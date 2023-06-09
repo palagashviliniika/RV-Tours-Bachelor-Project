@@ -6,6 +6,7 @@ import CustomizeContainer from "@/Components/CustomizeContainer";
 import Footer from "@/Components/Footer";
 
 export default function Welcome(props) {
+    console.log(props)
     return (
         <>
             <Head title="Welcome" />
@@ -27,10 +28,16 @@ export default function Welcome(props) {
             </div>
 
             {/*<Link href={route('test')}>Test Page</Link>*/}
-            <Navbar />
+            <Navbar
+                auth={props.auth}
+                errors={props.errors}
+            />
             <LandingSlider />
             <PopularContainer />
-            <CustomizeContainer />
+            <CustomizeContainer
+                auth={props.auth}
+                errors={props.errors}
+            />
             <Footer />
         </>
     );
