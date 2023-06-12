@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Transport;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+//        $this->call(TransportSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+
     }
 }
