@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tours', function (Blueprint $table) {
+        Schema::create('reserves', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->float('price');
-            $table->longText('description');
-            $table->date("startDate");
-            $table->date("endDate");
-            $table->integer('days');
-            $table->foreignId('transport_id')->constrained('transport')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('tour_id')->nullable()->constrained('tours')->cascadeOnDelete();
+            $table->foreignId('customTour_id')->nullable()->constrained('custom_tours')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tours');
+        Schema::dropIfExists('reserves');
     }
 };

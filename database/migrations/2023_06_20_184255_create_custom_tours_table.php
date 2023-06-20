@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trips', function (Blueprint $table) {
+        Schema::create('custom_tours', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->float('price');
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date("endDate");
             $table->integer('days');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('transport_id')->constrained('transport')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trips');
+        Schema::dropIfExists('custom_tours');
     }
 };
