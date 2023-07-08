@@ -29,13 +29,13 @@ const DateRangeComp = (props) => {
     // }
 
     const hideOnEscape = (e) => {
-        console.log(e.key)
+        // console.log(e.key)
         e.key === "Escape" && setOpen(false)
     }
 
     const hideOnClickOutside = (e) => {
-        console.log(refOne.current)
-        console.log(e.target)
+        // console.log(refOne.current)
+        // console.log(e.target)
         if (refOne.current && !refOne.current.contains(e.target)) {
             setOpen(false)
         }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,6 +33,8 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return Inertia::render('Test');
 })->name('test');
+
+Route::resource("tour", Controllers\TourController::class);
 
 
 Route::middleware('auth')->group(function () {
