@@ -33,11 +33,23 @@ class TourController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+        $tour = new Tour;
+        $tour->name = $request->name;
+        $tour->price = $request->price;
+        $tour->description = $request->description;
+        $tour->startDate = $request->startDate;
+        $tour->endDate = $request->endDate;
+        $tour->days = $request->days;
+        $tour->transport_id = $request->transport_id;
+
+        $tour->save();
+
+        return redirect('/tour');
+//        dd($request->all());
     }
 
     /**
@@ -78,10 +90,13 @@ class TourController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Tour  $tour
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Tour $tour)
     {
-        //
+        $tourDelete = Tour::find($tour);
+        $tourDelete->delete();
+
+        return redirect('/tour')->with('success', 'Tour Deleted');
     }
 }

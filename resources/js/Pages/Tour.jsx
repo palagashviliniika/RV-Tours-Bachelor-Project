@@ -17,11 +17,20 @@ export default function Tour(props) {
                         <div
                             className="p-6 text-gray-900"
                         >
-                            <button>
-                                <Link href={route('tour.create')}>
-                                    დაამატე ახალი ტური
-                                </Link>
-                            </button>
+                            <div className={"flex justify-between"}>
+                                <button>
+                                    <Link href={route('tour.create')}>
+                                        ტურის დამატება
+                                    </Link>
+                                </button>
+
+                                <button
+                                    form={"deleteForm"}
+                                >
+                                    ტურის წაშლა
+                                </button>
+                            </div>
+
                             <TourTable tours={props.tours}/>
                         </div>
                     </div>

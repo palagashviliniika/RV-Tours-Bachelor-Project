@@ -41,17 +41,38 @@ const DateRangeComp = (props) => {
         }
     }
 
-    console.log(range)
+    useEffect(() => {
+        const startDate = range[0].startDate
+        const endDate = range[0].endDate
+        const Difference_In_Time = endDate.getTime() - startDate.getTime();
+        const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
+        props.setData &&
+            props.setData(prevFormData => {
+            return {
+                ...prevFormData,
+                endDate:format(endDate, "yyyy-MM-dd"),
+                startDate:format(startDate, "yyyy-MM-dd"),
+                days: Difference_In_Days
+            }
+        })
+    }, [range])
+
+    const handleChange = (item) => {
+        setRange([item.selection])
+    }
+    // console.log(format(range[0].startDate, "yyyy-MM-dd"), format(range[0].endDate, "yyyy-MM-dd"))
+    // console.log(props.startDate, props.endDate)
     return (
         <div>
             <label
                 htmlFor="dates"
+                className={`block font-medium text-sm text-gray-700`}
             >
-                Select trip dates
+                მოგზაურობის პერიოდი
             </label>
             <input
-                value={`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                value={`${format(range[0].startDate, "yyyy-MM-dd")} - ${format(range[0].endDate, "yyyy-MM-dd")}`}
                 readOnly
                 name={"dates"}
                 id={"dates"}
@@ -62,7 +83,7 @@ const DateRangeComp = (props) => {
                 {
                     open &&
                     <DateRange
-                        onChange={item => setRange([item.selection])}
+                        onChange={handleChange}
                         editableDateInputs={true}
                         moveRangeOnFirstSelection={false}
                         ranges={range}

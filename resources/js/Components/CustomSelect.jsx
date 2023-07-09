@@ -9,11 +9,11 @@ const CustomSelect = (props) => {
 
     return (
         <div>
-            <label
-                htmlFor={props.name}
-            >
-                {props.label}
-            </label>
+            {/*<label*/}
+            {/*    htmlFor={props.name}*/}
+            {/*>*/}
+            {/*    {props.label}*/}
+            {/*</label>*/}
 
             <select
                 name={props.name}
