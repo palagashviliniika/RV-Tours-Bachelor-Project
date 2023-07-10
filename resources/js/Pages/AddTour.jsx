@@ -17,7 +17,7 @@ export default function AddTour(props) {
                         <div
                             className="p-6 text-gray-900"
                         >
-                            <AddTourForm/>
+                            <AddTourForm transports={props.transports}/>
                         </div>
                     </div>
                 </div>

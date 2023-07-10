@@ -22,7 +22,7 @@ const CustomSelect = (props) => {
                 onChange={props.onChange}
                 className={""}
             >
-                <option value="" disabled selected hidden>{props.placeholder}</option>
+                <option value="" disabled hidden>{props.placeholder}</option>
                 {selectOptions}
             </select>
         </div>

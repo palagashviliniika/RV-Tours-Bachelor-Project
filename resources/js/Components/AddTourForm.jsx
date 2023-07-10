@@ -6,15 +6,15 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import CustomSelect from "@/Components/CustomSelect";
 import DateRangeComp from "@/Components/DateRangeComp";
 
-const AddTourForm = () => {
-    const { data, setData, post, processing, errors } = useForm({
-        name:"",
-        price:"",
-        description:"",
-        startDate:"",
-        endDate:"",
-        days:"",
-        transport_id:""
+const AddTourForm = ({tour=null, transports}) => {
+    const { data, setData, post, put, processing, errors } = useForm({
+        name: tour ? tour.name : "",
+        price: tour ? tour.price : "",
+        description: tour ? tour.description : "",
+        startDate: tour ? tour.startDate : "",
+        endDate: tour ? tour.endDate : "",
+        days: tour ? tour.days : "",
+        transport_id: tour ? tour.transport_id : ""
     })
 
     const handleChange = (event) => {
@@ -30,10 +30,17 @@ const AddTourForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(data)
-        post(route("tour.store"), data)
+        tour ? put(route("tour.update", { tour: tour.id}), data) : post(route("tour.store"), data)
     }
 
-    // console.log(data)
+    const selectOptions = transports.map(transport => {
+        return  {
+            value: transport.id,
+            name: transport.name
+        }
+    })
+
+    console.log(tour)
 
     return (
         <form onSubmit={handleSubmit}>
@@ -84,16 +91,7 @@ const AddTourForm = () => {
                 name={"transport_id"}
                 value={data.transport_id}
                 onChange={handleChange}
-                options={[
-                    {
-                        value: "1",
-                        name: "Vintage Bus"
-                    },
-                    {
-                        value: "2",
-                        name: "RV Van"
-                    }
-                ]}
+                options={selectOptions}
             />
 
             <button

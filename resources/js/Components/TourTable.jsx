@@ -1,8 +1,13 @@
 import React from 'react';
-import {Link} from "@inertiajs/react";
+import {Link, router} from "@inertiajs/react";
 
 const TourTable = ({tours}) => {
-    console.log(tours)
+    // console.log(tours)
+
+    const handleDelete = (id) => {
+        router.delete(route('tour.destroy', { id: id}))
+    }
+
     return (
         <div>
 
@@ -10,14 +15,6 @@ const TourTable = ({tours}) => {
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" className="p-4">
-                            <div className="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox"
-                                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                />
-                                    <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
-                            </div>
-                        </th>
                         <th scope="col" className="px-6 py-3">
                             სახელი
                         </th>
@@ -42,6 +39,9 @@ const TourTable = ({tours}) => {
                         <th scope="col" className="px-6 py-3">
                             რედაქტირება
                         </th>
+                        <th scope="col" className="px-6 py-3">
+                            წაშლა
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,22 +49,7 @@ const TourTable = ({tours}) => {
                         tours.map(tour=>{
                             return(
                                 <tr key={tour.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th className="w-4 p-4">
-                                        <form action={route('tour.destroy', { id: tour.id})}>
-                                            <button type="submit" data-modal-target="editUserModal" data-modal-show="editUserModal"
-                                                    className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete
-                                            </button>
-                                        </form>
 
-                                        {/*<form action={route('tour.destroy', { id: tour.id})} id={"deleteForm"}>*/}
-                                        {/*    <div className="flex items-center">*/}
-                                        {/*        <input id="checkbox-table-search-1" type="checkbox"*/}
-                                        {/*               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"*/}
-                                        {/*        />*/}
-                                        {/*        <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>*/}
-                                        {/*    </div>*/}
-                                        {/*</form>*/}
-                                    </th>
                                     <th className="px-6 py-4 text-white">
                                         {tour.name}
                                     </th>
@@ -87,11 +72,17 @@ const TourTable = ({tours}) => {
                                         {tour.transport.name}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {/*Modal toggle*/}
                                         <Link href={route('tour.edit', { id: tour.id})} type="button" data-modal-target="editUserModal" data-modal-show="editUserModal"
                                               className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user
                                         </Link>
                                     </td>
+                                    <th className="w-4 p-4">
+                                        <button
+                                            onClick={() => handleDelete(tour.id)}
+                                            className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete
+                                        </button>
+                                    </th>
+
                                 </tr>
                             )
                         })

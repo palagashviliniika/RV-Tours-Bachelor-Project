@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tour;
+use App\Models\Transport;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,7 +17,7 @@ class TourController extends Controller
     public function index()
     {
         $tours=Tour::with("transport")->get();
-        return Inertia::render('Tour', ["tours"=>$tours]);
+        return Inertia::render('Tour', ["tours" => $tours]);
     }
 
     /**
@@ -26,7 +27,9 @@ class TourController extends Controller
      */
     public function create()
     {
-        return Inertia::render('AddTour');
+        $transports = Transport::all();
+
+        return Inertia::render('AddTour', ["transports" => $transports]);
     }
 
     /**
@@ -71,7 +74,9 @@ class TourController extends Controller
      */
     public function edit(Tour $tour)
     {
-        return Inertia::render('EditTour');
+        $transports = Transport::all();
+
+        return Inertia::render('EditTour', ["tour" => $tour, "transports" => $transports]);
     }
 
     /**
@@ -79,11 +84,21 @@ class TourController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Tour  $tour
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Tour $tour)
     {
-        //
+        $tour->update([
+            "name" => $request->name,
+            "price" => $request->price,
+            "description" => $request->description,
+            "startDate" => $request->startDate,
+            "endDate" => $request->endDate,
+            "days" => $request->days,
+            "transport_id" => $request->transport_id
+        ]);
+
+        return redirect('/tour');
     }
 
     /**
@@ -94,8 +109,7 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
-        $tourDelete = Tour::find($tour);
-        $tourDelete->delete();
+        $tour->delete();
 
         return redirect('/tour')->with('success', 'Tour Deleted');
     }
