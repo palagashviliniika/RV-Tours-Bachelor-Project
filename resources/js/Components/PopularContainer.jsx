@@ -1,17 +1,21 @@
 import React from 'react';
 import PopularSingle from "@/Components/PopularSingle";
 
-const PopularContainer = () => {
+const PopularContainer = ({tours}) => {
+
     return (
         <>
             <div className={"container mx-auto py-6"}>
                 <h1 className={"text-texts text-5xl font-black"}>Popular Destinations</h1>
                 <p className={"text-xl mt-2 mb-6"}>From historical cities to natural specteculars, come see the best of Georgia</p>
                 <div className={"flex gap-8"}>
-                    <PopularSingle />
-                    <PopularSingle />
-                    <PopularSingle />
-                    <PopularSingle />
+                    {tours && tours.slice(0, 4).map(tour => {
+                        return (
+                            <PopularSingle
+                                tour={tour}
+                            />
+                            )
+                    })}
                 </div>
             </div>
 

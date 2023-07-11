@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reserve;
 use App\Models\Tour;
 use App\Models\Transport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class TourController extends Controller
@@ -112,5 +114,23 @@ class TourController extends Controller
         $tour->delete();
 
         return redirect('/tour')->with('success', 'Tour Deleted');
+    }
+
+    /**
+     * Reserve tour in reserves table.
+     *
+     * @param Request $request
+     */
+    public function reserve(Request $request)
+    {
+//        $newTour = Tour::find($request->tour);
+
+        $reserveTour = new Reserve;
+        $reserveTour->user_id = Auth::id();
+        $reserveTour->tour_id = $request->tour;
+
+        $reserveTour->save();
+
+//        dd($newTour, Auth::id());
     }
 }

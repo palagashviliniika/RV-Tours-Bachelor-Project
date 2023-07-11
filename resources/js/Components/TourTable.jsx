@@ -56,7 +56,7 @@ const TourTable = ({tours}) => {
                                     <td className="px-6 py-4">
                                         {tour.price}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 truncate max-w-[16rem]">
                                         {tour.description}
                                     </td>
                                     <td className="px-6 py-4">
