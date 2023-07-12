@@ -2,8 +2,11 @@ import React from 'react';
 
 const Landing = ({img, txt, btn}) => {
     return (
-        <div className={`flex justify-center items-center bg-black mx-auto px-4 text-center w-screen h-[calc(100vh_-_98px)] bg-center bg-[url(${img})]`}>
-            <div className={"flex flex-col gap-10 items-center"}>
+        <div className={`relative flex justify-center items-center mx-auto px-4 text-center w-screen h-[calc(100vh_-_98px)]`}>
+            <div className={"w-full h-full absolute"}>
+                <img src={img} alt=""/>
+            </div>
+            <div className={"flex flex-col gap-10 items-center z-50"}>
                 <h1 className={"text-5xl font-black text-snowWhite"}>
                     Explore Georgia on Wheels
                 </h1>

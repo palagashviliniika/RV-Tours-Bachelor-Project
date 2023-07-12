@@ -26,14 +26,14 @@ const LandingSlider = () => {
             >
                 <SwiperSlide>
                     <Landing
-                        img={"/public/images/landingpic.jpg"}
+                        img={"/images/landingpic.jpg"}
                         txt={"Georgia Awaits: Embrace the Freedom of the Open Road and Explore Georgia on Wheels!"}
                         btn={"Explore Now"}
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Landing
-                        img={"/public/images/rvriver.jpg"}
+                        img={"/images/rvriver.jpg"}
                         txt={"Chart Your Own Course: Let the Wheels Take You on an Unforgettable Georgian Adventure!"}
                         btn={"Plan Your Trip"}
                     />
