@@ -6,7 +6,7 @@ import CustomizeContainer from "@/Components/CustomizeContainer";
 import Footer from "@/Components/Footer";
 
 export default function Welcome(props) {
-    console.log(props)
+    // console.log(props)
     return (
         <>
             <Head title="Welcome" />
@@ -22,6 +22,7 @@ export default function Welcome(props) {
             <CustomizeContainer
                 auth={props.auth}
                 errors={props.errors}
+                transports={props.transports}
             />
             <Footer />
         </>

@@ -4,7 +4,7 @@ import { Link, Head } from '@inertiajs/react';
 import Dropdown from "@/Components/Dropdown";
 
 const Navbar = (props) => {
-    console.log(props.auth)
+    // console.log(props.auth)
     return (
         <div className={"sticky top-0 z-10 w-screen text-xl flex items-center justify-between bg-snowWhite px-32 py-6"}>
             <Link
@@ -17,14 +17,14 @@ const Navbar = (props) => {
             <div className={"pt-2 flex gap-6 items-center"}>
                 <ul className={"flex gap-6 font-medium"}>
                     <li className={"border-b-2 border-transparent hover:text-rust-hover hover:border-rust-hover transition ease-in-out"}>
-                        <a href={"#"}>
+                        <Link href={route('home')}>
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li className={"border-b-2 border-transparent hover:text-rust-hover hover:border-rust-hover transition ease-in-out"}>
-                        <a href="">
+                        <Link href={route('toursPage')}>
                             Tours
-                        </a>
+                        </Link>
                     </li>
                     <li className={"border-b-2 border-transparent hover:text-rust-hover hover:border-rust-hover transition ease-in-out"}>
                         <a href="">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Reserve extends Model
 {
@@ -14,4 +15,9 @@ class Reserve extends Model
         'tour_id',
         'customTour_id'
     ];
+
+    public function tours(): BelongsTo
+    {
+        return $this->belongsTo(Tour::class, 'tour_id', 'id');
+    }
 }

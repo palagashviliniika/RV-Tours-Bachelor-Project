@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CustomTour extends Model
 {
@@ -14,6 +15,13 @@ class CustomTour extends Model
         'price',
         'startDate',
         'endDate',
-        'user_id'
+        'days',
+        'user_id',
+        'transport_id'
     ];
+
+    public function transport(): BelongsTo
+    {
+        return $this->belongsTo(Transport::class);
+    }
 }

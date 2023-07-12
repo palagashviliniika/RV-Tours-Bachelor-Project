@@ -3,10 +3,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+import {Link} from '@inertiajs/react';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+
+    const role = auth.user.role_id
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -24,9 +26,24 @@ export default function Authenticated({ auth, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
-                                <NavLink href={route('tour.index')} active={route().current('tour.index')}>
-                                    Tour
+                                {   role === 2 &&
+                                    <NavLink href={route('tour.index')} active={route().current('tour.index')}>
+                                        Tour
+                                    </NavLink>
+                                }
+
+                                {   role === 2 &&
+                                <NavLink href={route('transport.index')} active={route().current('transport.index')}>
+                                    Transport
                                 </NavLink>
+                                }
+
+                                {   role === 1 &&
+                                <NavLink href={route('reservedTours')} active={route().current('reservedTours')}>
+                                    Reserved Tours
+                                </NavLink>
+                                }
+
                             </div>
                         </div>
 

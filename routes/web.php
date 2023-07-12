@@ -19,6 +19,9 @@ use Inertia\Inertia;
 
 Route::get('/', [Controllers\HomeController::class, "index"])->name('home');
 
+
+Route::get('/tours', [Controllers\HomeController::class, "tourPageIndex"])->name("toursPage");
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -27,14 +30,19 @@ Route::get('/test', function () {
     return Inertia::render('Test');
 })->name('test');
 
-Route::resource("tour", Controllers\TourController::class);
-Route::post('/reserve', [Controllers\TourController::class, 'reserve'])->name('tour.reserve');
-
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::resource("tour", Controllers\TourController::class);
+    Route::resource("transport", Controllers\TransportController::class);
+    Route::post('/reserve', [Controllers\TourController::class, 'reserve'])->name('tour.reserve');
+    Route::post('/reserveCustomTour', [Controllers\HomeController::class, "reserveCustomTour"])->name('reserveCustomTour');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/reservedTours', [Controllers\ReservedToursController::class, "index"])->name('reservedTours');
+//    Route::get('/reservedTours', [Controllers\ReservedToursController::class, "customToursIndex"])->name('reservedCustomTours');
 });
 
 

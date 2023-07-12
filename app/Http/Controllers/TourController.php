@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateAdminTourRequest;
 use App\Models\Reserve;
 use App\Models\Tour;
 use App\Models\Transport;
@@ -37,10 +38,10 @@ class TourController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CreateAdminTourRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(CreateAdminTourRequest $request)
     {
         $tour = new Tour;
         $tour->name = $request->name;

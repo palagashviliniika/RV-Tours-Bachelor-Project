@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
-import { useForm } from '@inertiajs/react'
+import {useForm, usePage} from '@inertiajs/react'
 import PrimaryButton from "@/Components/PrimaryButton";
 import CustomSelect from "@/Components/CustomSelect";
 import DateRangeComp from "@/Components/DateRangeComp";
 
 const AddTourForm = ({tour=null, transports}) => {
-    const { data, setData, post, put, processing, errors } = useForm({
+    const { errors } = usePage().props
+
+    const { data, setData, post, put, processing} = useForm({
         name: tour ? tour.name : "",
         price: tour ? tour.price : "",
         description: tour ? tour.description : "",
@@ -56,6 +58,10 @@ const AddTourForm = ({tour=null, transports}) => {
                 onChange={handleChange}
             />
 
+            <p className={"text-red-600"}>
+                {errors.name ?? "" }
+            </p>
+
             <InputLabel htmlFor="price" value="ფასი" />
 
             <TextInput
@@ -67,6 +73,10 @@ const AddTourForm = ({tour=null, transports}) => {
                 isFocused={true}
                 onChange={handleChange}
             />
+
+            <p className={"text-red-600"}>
+                {errors.price ?? "" }
+            </p>
 
             <InputLabel htmlFor="description" value="აღწერა" />
 
@@ -80,10 +90,18 @@ const AddTourForm = ({tour=null, transports}) => {
                 onChange={handleChange}
             />
 
+            <p className={"text-red-600"}>
+                {errors.description ?? "" }
+            </p>
+
             <DateRangeComp
                 data={data}
                 setData={setData}
             />
+
+            <p className={"text-red-600"}>
+                {errors.startDate ?? "" }
+            </p>
 
             <InputLabel htmlFor="transport_id" value="ტრანსპორტის ტიპი" />
 
@@ -93,6 +111,10 @@ const AddTourForm = ({tour=null, transports}) => {
                 onChange={handleChange}
                 options={selectOptions}
             />
+
+            <p className={"text-red-600"}>
+                {errors.transport_id ?? "" }
+            </p>
 
             <button
                 type={"submit"}
