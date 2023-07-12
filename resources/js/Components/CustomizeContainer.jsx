@@ -17,10 +17,10 @@ const CustomizeContainer = ({auth, errors, transports}) => {
                     </iframe>
                 </div>
 
-                <div className={"md:w-1/2 w-full"}>
+                <div className={"md:w-1/2 w-full "}>
                     <div className="">
                         {/*<div className="w-60 mx-auto sm:px-6 lg:px-8">*/}
-                            <div className="bg-gray-100 overflow-hidden shadow-sm sm:rounded-lg">
+                            <div className=" bg-gray-100 overflow-hidden shadow-sm sm:rounded-lg">
                                 <div className="p-6 text-gray-900 p-32">
                                     <CustomizeForm
                                         transports={transports}

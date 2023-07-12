@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import CustomSelect from "@/Components/CustomSelect";
 import DateRangeComp from "@/Components/DateRangeComp";
 import {router, useForm, usePage} from "@inertiajs/react";
+import InputLabel from "@/Components/InputLabel";
 
 const CustomizeForm = ({transports}) => {
     const { auth, errors } = usePage().props
@@ -53,12 +54,14 @@ const CustomizeForm = ({transports}) => {
 
     return (
         <div>
-            <div className={"flex flex-col"}>
+            <div className={"flex flex-col pb-10"}>
                 <h1 className={"text-rust text-3xl font-semibold"}>Georgia Awaits</h1>
                 <p className={"text-texts text-lg "}>Plan your trip now and here!</p>
             </div>
 
             <form onSubmit={handleSubmit}>
+                <InputLabel htmlFor="name" value="მოგზაურობის ადგილი" />
+
                 <CustomSelect
                     name={"name"}
                     label={"Where to?"}
@@ -84,6 +87,8 @@ const CustomizeForm = ({transports}) => {
                 <p className={"text-red-600"}>
                     {errors.name ?? "" }
                 </p>
+
+                <InputLabel htmlFor="transport_id" value="სატრანსპორტო საშუალება" />
 
                 <CustomSelect
                     name={"transport_id"}
