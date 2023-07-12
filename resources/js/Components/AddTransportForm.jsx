@@ -4,11 +4,11 @@ import TextInput from "@/Components/TextInput";
 import {useForm, usePage} from '@inertiajs/react'
 import PrimaryButton from "@/Components/PrimaryButton";
 
-const AddTransportForm = ({tour=null}) => {
+const AddTransportForm = ({transport=null}) => {
     const { errors } = usePage().props
 
     const { data, setData, post, put, processing} = useForm({
-        name: tour ? tour.name : ""
+        name: transport ? transport.name : ""
     })
 
     const handleChange = (event) => {
@@ -24,7 +24,7 @@ const AddTransportForm = ({tour=null}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(data)
-        tour ? put(route("tour.update", { tour: tour.id}), data) : post(route("transport.store"), data)
+        transport ? put(route("transport.update", { transport: transport.id}), data) : post(route("transport.store"), data)
     }
 
     // console.log(tour)
@@ -44,9 +44,9 @@ const AddTransportForm = ({tour=null}) => {
                 onChange={handleChange}
             />
 
-            {/*<p className={"text-red-600"}>*/}
-            {/*    {errors.name ?? "" }*/}
-            {/*</p>*/}
+            <p className={"text-red-600"}>
+                {errors.name ?? "" }
+            </p>
 
             <button
                 type={"submit"}

@@ -5,7 +5,7 @@ const TransportTable = ({transports}) => {
     // console.log(tours)
 
     const handleDelete = (id) => {
-        router.delete(route('tour.destroy', { id: id}))
+        router.delete(route('transport.destroy', { id: id}))
     }
 
     return (
@@ -37,7 +37,7 @@ const TransportTable = ({transports}) => {
                                     </th>
 
                                     <td className="px-6 py-4">
-                                        <Link href={route('tour.edit', { id: transport.id})} type="button" data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                        <Link href={route('transport.edit', { id: transport.id})} type="button" data-modal-target="editUserModal" data-modal-show="editUserModal"
                                               className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user
                                         </Link>
                                     </td>

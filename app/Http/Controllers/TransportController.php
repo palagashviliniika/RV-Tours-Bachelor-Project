@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTransportRequest;
 use App\Models\Transport;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -36,7 +37,7 @@ class TransportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(CreateTransportRequest $request)
     {
         $transport = new Transport;
 //        dd($request->all());
@@ -62,11 +63,11 @@ class TransportController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Transport  $transport
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function edit(Transport $transport)
     {
-        //
+        return Inertia::render('EditTransport', ["transport" => $transport]);
     }
 
     /**
@@ -74,21 +75,27 @@ class TransportController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Transport  $transport
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Transport $transport)
     {
-        //
+        $transport->update([
+            "name" => $request->name
+        ]);
+
+        return redirect('transport');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Transport  $transport
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Transport $transport)
     {
-        //
+        $transport->delete();
+
+        return redirect('/transport')->with('success', 'Transport Type Deleted');
     }
 }

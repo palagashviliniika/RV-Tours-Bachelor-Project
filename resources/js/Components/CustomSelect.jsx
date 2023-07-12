@@ -20,7 +20,7 @@ const CustomSelect = (props) => {
                 id={props.name}
                 value={props.value}
                 onChange={props.onChange}
-                className={""}
+                className={"my-2"}
             >
                 <option value="" disabled hidden>{props.placeholder}</option>
                 {selectOptions}
